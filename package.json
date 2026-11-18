@@ -1,0 +1,16 @@
+{
+  "name": "aniquiz-love",
+  "version": "3.0.0",
+  "description": "多人線上戀愛動漫猜謎遊戲",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  }
+}

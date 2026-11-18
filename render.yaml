@@ -1,0 +1,13 @@
+{
+  "services": [
+    {
+      "type": "web",
+      "name": "aniquiz-love",
+      "runtime": "node",
+      "buildCommand": "npm install",
+      "startCommand": "npm start",
+      "healthCheckPath": "/health",
+      "plan": "free"
+    }
+  ]
+}

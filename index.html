@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#100d20"><title>AniQuiz Love 3.0｜戀愛動漫猜謎</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="ambient a1"></div><div class="ambient a2"></div>
+  <header class="topbar"><div class="brand"><span class="brand-mark">♡</span><span>AniQuiz <b>LOVE</b><small>ROMANCE ANIME QUIZ</small></span></div><div class="version">3.0</div></header>
+  <main class="shell">
+    <section id="homeScreen" class="screen active">
+      <div class="hero"><div class="eyebrow">♡ FOR ROMANCE ANIME FANS</div><h1>戀愛動漫<br><span>猜謎時間</span></h1><p>從經典純愛到最新戀愛番，挑戰你的動漫知識。</p></div>
+      <div class="panel home-panel">
+        <label for="playerName">你的暱稱</label><input id="playerName" maxlength="12" placeholder="輸入暱稱（最多 12 字）">
+        <label>選擇題庫</label><div class="category-grid" id="categoryGrid">
+          <button class="category selected" data-category="all"><b>綜合全部</b><small>所有戀愛動漫</small></button>
+          <button class="category" data-category="recent"><b>近期戀愛番</b><small>2020 年起</small></button>
+          <button class="category" data-category="classic"><b>經典戀愛番</b><small>2000–2019</small></button>
+          <button class="category" data-category="early"><b>早期戀愛番</b><small>2000 年以前</small></button>
+          <button class="category" data-category="school"><b>校園戀愛</b><small>青春與日常</small></button>
+          <button class="category" data-category="pure"><b>純愛</b><small>心動與告白</small></button>
+          <button class="category" data-category="comedy"><b>戀愛喜劇</b><small>甜蜜又搞笑</small></button>
+          <button class="category" data-category="fantasy"><b>奇幻戀愛</b><small>異世界與幻想</small></button>
+          <button class="category" data-category="tearjerker"><b>虐心催淚</b><small>感動系作品</small></button>
+        </div>
+        <div class="actions"><button id="createBtn" class="btn primary">建立遊戲房間</button></div>
+        <div class="join-row"><input id="roomCodeInput" maxlength="5" placeholder="輸入 5 位房號"><button id="joinBtn" class="btn secondary">加入房間</button></div>
+        <div id="homeMessage" class="message"></div>
+      </div>
+      <div class="feature-line"><span>✦ 最多 12 位玩家</span><span>✦ 每題 20 秒</span><span>✦ 即時排行榜</span></div>
+    </section>
+
+    <section id="lobbyScreen" class="screen">
+      <div class="eyebrow">ROOM LOBBY</div><h2>等待玩家加入</h2>
+      <div class="panel room-panel"><div class="room-code-label">本場房號</div><div id="roomCode" class="room-code">-----</div><button id="copyCodeBtn" class="copy-btn">複製房號</button>
+        <div class="lobby-meta"><span id="lobbyCategory">綜合全部</span><span id="playerCount">1 / 12 人</span></div>
+        <div id="playerList" class="player-list"></div>
+        <button id="startBtn" class="btn primary wide">開始遊戲</button><p class="hint" id="hostHint">房主可以開始遊戲</p>
+        <button id="leaveBtn" class="text-btn">離開房間</button>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="screen">
+      <div class="game-head"><div><span class="eyebrow">QUESTION</span><div id="questionNumber" class="q-number">01 / 10</div></div><div class="timer-wrap"><div id="timer" class="timer">20</div><small>SECONDS</small></div></div>
+      <div class="progress"><div id="progressBar"></div></div>
+      <div class="panel question-panel"><div id="questionCategory" class="question-category"></div><h2 id="questionText">題目載入中…</h2><div id="answerGrid" class="answer-grid"></div><div id="answerFeedback" class="feedback"></div></div>
+      <div class="score-strip"><span>我的分數</span><b id="myScore">0</b><span id="answeredCount">已作答 0 人</span></div>
+    </section>
+
+    <section id="finishScreen" class="screen">
+      <div class="eyebrow">GAME FINISHED</div><h1 class="finish-title">本場結果</h1><div class="panel finish-panel"><div class="trophy">🏆</div><h2>最終排行榜</h2><div id="finalRanking" class="ranking"></div><button id="restartBtn" class="btn primary wide">重新開始</button><button id="backHomeBtn" class="text-btn">回到首頁</button></div>
+    </section>
+  </main>
+  <div id="toast" class="toast"></div>
+  <script src="/socket.io/socket.io.js"></script><script src="/app.js"></script>
+</body></html>
