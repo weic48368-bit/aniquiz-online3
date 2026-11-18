@@ -13,7 +13,7 @@ const MAX_PLAYERS = 12;
 const QUESTION_SECONDS = 20;
 const TOTAL_QUESTIONS = 10;
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(__dirname));
 app.get("/health", (_req, res) => res.json({ ok: true }));
 
 function makeCode() {
