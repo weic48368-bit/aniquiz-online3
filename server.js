@@ -83,6 +83,7 @@ function clearRoomTimer(room) {
   }
 }
 
+
 function selectQuestions(category) {
   const validQuestions = QUESTIONS.filter(q =>
     q &&
@@ -101,8 +102,26 @@ function selectQuestions(category) {
 
   if (!pool.length) pool = validQuestions;
 
-  return shuffle(pool).slice(0, TOTAL_QUESTIONS);
+  return shuffle(pool)
+    .slice(0, TOTAL_QUESTIONS)
+    .map(q => {
+      const options = shuffle(
+        q.options.map((text, index) => ({
+          text,
+          originalIndex: index
+        }))
+      );
+
+      return {
+        ...q,
+        options: options.map(item => item.text),
+        answer: options.findIndex(
+          item => item.originalIndex === q.answer
+        )
+      };
+    });
 }
+
 
 function endGame(room) {
   clearRoomTimer(room);
